@@ -6,10 +6,9 @@ using namespace snaro::details;
 
 namespace active_segment_queue_tests {
 
-// helper to create segments with predictable behavior
 active_segment make_segment(int id, double x1, double y1, double x2, double y2) {
   active_segment seg{{x1, y1}, {x2, y2}};
-  seg.seg_id = id; // assuming id is public or settable
+  seg.seg_id = id;
   return seg;
 }
 
@@ -103,8 +102,22 @@ TEST(active_segment_queue, swap_segments_priority) {
   queue.insert(seg_a);
   queue.insert(seg_b);
 
-  // after swap, priority manager must register one rule
+  // before swap, a must come before b
+  EXPECT_EQ(queue.get_above(seg_a).value().seg_id, seg_b.seg_id);
+  EXPECT_EQ(queue.get_below(seg_b).value().seg_id, seg_a.seg_id);
+
+  // swap
   EXPECT_TRUE(queue.swap(seg_a, seg_b));
+
+  // check swap happened
+  EXPECT_EQ(queue.get_below(seg_a).value().seg_id, seg_b.seg_id);
+  EXPECT_EQ(queue.get_above(seg_b).value().seg_id, seg_a.seg_id);
+}
+
+TEST(active_segment_queue, swap_same_id) {
+  active_segment_queue queue;
+  const auto seg_a = make_segment(1, 0, 1, 2, 1);
+  queue.insert(seg_a);
   EXPECT_FALSE(queue.swap(seg_a, seg_a)); // cannot swap same id
 }
 
