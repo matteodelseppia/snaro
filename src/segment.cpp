@@ -1,4 +1,4 @@
-#include "snaro/segment"
+#include "snaro/segment.hpp"
 
 namespace snaro {
 

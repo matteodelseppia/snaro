@@ -4,8 +4,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(Headers
-  "include/snaro/point"
-  "include/snaro/segment"
+  "include/snaro/point.hpp"
+  "include/snaro/segment.hpp"
 )
 
 set(Sources

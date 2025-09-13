@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "snaro/segment"
+#include "snaro/segment.hpp"
 
 using namespace snaro;
 

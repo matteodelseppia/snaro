@@ -2,7 +2,7 @@
 
 #include <cstddef>
 
-#include "snaro/point"
+#include "snaro/point.hpp"
 
 namespace snaro {
 
