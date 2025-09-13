@@ -25,7 +25,7 @@ TEST(event_queue, empty_on_construction) {
 TEST(event_queue, add_and_front) {
   event_queue q{1.0};
   event e = make_event(1.0, 2.0);
-  event::id id = q.add(e);
+  event::id id = q.insert(e);
 
   ASSERT_TRUE(q.front().has_value());
   EXPECT_EQ(q.front()->event_id, id);
@@ -37,8 +37,8 @@ TEST(event_queue, add_assigns_increasing_ids) {
   event e1 = make_event(0.0, 0.0);
   event e2 = make_event(1.0, 1.0);
 
-  event::id id1 = q.add(e1);
-  event::id id2 = q.add(e2);
+  event::id id1 = q.insert(e1);
+  event::id id2 = q.insert(e2);
 
   EXPECT_EQ(id1, 0);
   EXPECT_EQ(id2, 1);
@@ -46,8 +46,8 @@ TEST(event_queue, add_assigns_increasing_ids) {
 
 TEST(event_queue, pop_returns_and_removes_front) {
   event_queue q{1.0};
-  q.add(make_event(0.0, 0.0));
-  q.add(make_event(1.0, 1.0));
+  q.insert(make_event(0.0, 0.0));
+  q.insert(make_event(1.0, 1.0));
 
   auto e1 = q.pop();
   ASSERT_TRUE(e1.has_value());
@@ -58,9 +58,9 @@ TEST(event_queue, pop_returns_and_removes_front) {
 
 TEST(event_queue, pop_column_returns_all_in_same_column) {
   event_queue q{1.0};
-  q.add(make_event(0.2, 0.0)); // column 0
-  q.add(make_event(0.3, 1.0)); // column 0
-  q.add(make_event(1.4, 2.0)); // column 1
+  q.insert(make_event(0.2, 0.0)); // column 0
+  q.insert(make_event(0.3, 1.0)); // column 0
+  q.insert(make_event(1.4, 2.0)); // column 1
 
   auto col0 = q.pop_column();
   ASSERT_EQ(col0.size(), 2);
@@ -76,9 +76,9 @@ TEST(event_queue, pop_column_returns_all_in_same_column) {
 
 TEST(event_queue, pop_column_respects_precision) {
   event_queue q{0.5};
-  q.add(make_event(0.1, 0.0)); // column 0
-  q.add(make_event(0.2, 1.0)); // column 0
-  q.add(make_event(0.6, 2.0)); // column 1
+  q.insert(make_event(0.1, 0.0)); // column 0
+  q.insert(make_event(0.2, 1.0)); // column 0
+  q.insert(make_event(0.6, 2.0)); // column 1
 
   auto col0 = q.pop_column();
   EXPECT_EQ(col0.size(), 2);

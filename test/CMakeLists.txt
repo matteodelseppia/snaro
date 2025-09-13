@@ -12,6 +12,7 @@ set(Sources
   "src/segment.cpp"
   "src/event.cpp"
   "src/event_queue.cpp"
+  "src/active_segment_queue.cpp"
 )
 
 add_executable(${PROJECT_NAME}_test ${Sources})

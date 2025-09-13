@@ -13,7 +13,7 @@ public:
   explicit event_queue(double precision) : m_precision{precision} {}
   bool empty() const;
   std::optional<event> front() const;
-  event::id add(const event& event);
+  event::id insert(const event& event);
   std::optional<event> pop();
   std::vector<event> pop_column();
 

@@ -15,7 +15,7 @@ std::optional<event> event_queue::front() const {
   return *m_events.cbegin();
 }
 
-event::id event_queue::add(const event& e) {
+event::id event_queue::insert(const event& e) {
   event ev = e;
   ev.event_id = m_next_id++;
   m_events.insert(ev);
