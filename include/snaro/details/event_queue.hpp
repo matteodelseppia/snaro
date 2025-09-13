@@ -15,7 +15,7 @@ public:
   std::optional<event> front() const;
   event::id insert(const event& event);
   std::optional<event> pop();
-  std::vector<event> pop_column();
+  std::set<event> pop_column();
 
 private:
   const double m_precision;

@@ -32,8 +32,8 @@ std::optional<event> event_queue::pop() {
   return peek;
 }
 
-std::vector<event> event_queue::pop_column() {
-  std::vector<event> events_of_column;
+std::set<event> event_queue::pop_column() {
+  std::set<event> events_of_column;
   if (empty()) {
     return events_of_column;
   }
@@ -48,7 +48,7 @@ std::vector<event> event_queue::pop_column() {
       break;
     }
 
-    events_of_column.push_back(e);
+    events_of_column.insert(e);
     pop();
   }
 

@@ -11,6 +11,7 @@ set(Headers
   "include/snaro/details/event.hpp"
   "include/snaro/details/event_queue.hpp"
   "include/snaro/details/active_segment_queue.hpp"
+  "include/snaro/details/sweep_line.hpp"
 )
 
 set(Sources

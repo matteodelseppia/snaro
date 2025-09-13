@@ -64,12 +64,12 @@ TEST(event_queue, pop_column_returns_all_in_same_column) {
 
   auto col0 = q.pop_column();
   ASSERT_EQ(col0.size(), 2);
-  EXPECT_EQ(pixel::column_of(col0[0].position, 1.0), 0);
-  EXPECT_EQ(pixel::column_of(col0[1].position, 1.0), 0);
+  EXPECT_EQ(pixel::column_of(col0.cbegin()->position, 1.0), 0);
+  EXPECT_EQ(pixel::column_of(col0.crbegin()->position, 1.0), 0);
 
   auto col1 = q.pop_column();
   ASSERT_EQ(col1.size(), 1);
-  EXPECT_EQ(pixel::column_of(col1[0].position, 1.0), 1);
+  EXPECT_EQ(pixel::column_of(col1.cbegin()->position, 1.0), 1);
 
   EXPECT_TRUE(q.empty());
 }
