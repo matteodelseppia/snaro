@@ -1,6 +1,5 @@
 #pragma once
 
-#include <cstdint>
 #include <cmath>
 
 #include "snaro/segment.hpp"
@@ -14,15 +13,15 @@ struct pixel {
   column x;
   row y;
 
-  static inline pixel from_urpoint(const urpoint& p, double precision) {
-    return {std::llround(p.x / precision), std::llround(p.y / precision)};
-  }
-
-  static inline rpoint to_rpoint(const pixel& p, double precision) {
+  rpoint to_rpoint(double precision) const {
     return {p.x * precision, p.y * precision};
   }
 
-  static inline pixel::column column_of(const urpoint& p, double precision) {
+  static pixel from_urpoint(const urpoint& p, double precision) {
+    return {std::llround(p.x / precision), std::llround(p.y / precision)};
+  }
+
+  static pixel::column column_of(const urpoint& p, double precision) {
     return from_urpoint({p.x, 0.0}, precision).x;
   }
 };
