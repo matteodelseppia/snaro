@@ -15,6 +15,7 @@ set(Headers
 set(Sources
   "src/segment.cpp"
   "src/event.cpp"
+  "src/event_queue.cpp"
 )
 
 add_library(snaro ${Headers} ${Sources})

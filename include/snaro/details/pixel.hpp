@@ -14,7 +14,7 @@ struct pixel {
   row y;
 
   rpoint to_rpoint(double precision) const {
-    return {p.x * precision, p.y * precision};
+    return {x * precision, y * precision};
   }
 
   static pixel from_urpoint(const urpoint& p, double precision) {
