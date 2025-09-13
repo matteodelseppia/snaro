@@ -8,10 +8,13 @@ set(Headers
   "include/snaro/point.hpp"
   "include/snaro/segment.hpp"
   "include/snaro/details/pixel.hpp"
+  "include/snaro/details/event.hpp"
+  "include/snaro/details/event_queue.hpp"
 )
 
 set(Sources
   "src/segment.cpp"
+  "src/event.cpp"
 )
 
 add_library(snaro ${Headers} ${Sources})

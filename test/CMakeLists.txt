@@ -10,6 +10,7 @@ include(GoogleTest)
 
 set(Sources
   "src/segment.cpp"
+  "src/event.cpp"
 )
 
 add_executable(${PROJECT_NAME}_test ${Sources})
