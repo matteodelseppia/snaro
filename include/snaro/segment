@@ -1,0 +1,25 @@
+#pragma once
+
+#include <cstddef>
+
+#include "snaro/point"
+
+namespace snaro {
+
+struct segment {
+  using unrounded = segment;
+  using rounded = segment;
+  using id = std::size_t;
+  point start;
+  point end;
+  id seg_id;
+
+  bool vertical() const;
+  double y_at(double x) const;
+  urpoint urpoint_at(double x) const;
+};
+
+using ursegment = segment::unrounded;
+using rsegment = segment::rounded;
+
+} // namespace snaro
