@@ -28,7 +28,7 @@ private:
     if (events.empty())
       return;
 
-    std::set<event> new_events = consumer.process(events);
+    std::vector<event> new_events = consumer.process(events);
     for (const auto& e : new_events) {
       m_events_queue.insert(e);
     }
