@@ -1,3 +1,5 @@
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
+
 include(FetchContent)
 
 FetchContent_Declare(
