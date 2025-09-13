@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(Headers
   "include/snaro/point.hpp"
   "include/snaro/segment.hpp"
+  "include/snaro/details/pixel.hpp"
 )
 
 set(Sources
