@@ -1,3 +1,5 @@
+#include <cassert>
+
 #include "snaro/details/active_segment_queue.hpp"
 
 namespace snaro::details {
@@ -72,11 +74,18 @@ bool active_segment_queue::swap(const active_segment& this_seg,
   m_queue.erase(it_this);
   m_queue.erase(it_that);
 
-  if (m_comparator(this_seg, that_seg)) {
+  bool was_this_before_that = false;
+  if ((was_this_before_that = m_comparator(this_seg, that_seg))) {
     m_priority_manager.add_rule(that_seg.seg_id, this_seg.seg_id);
   } else {
     m_priority_manager.add_rule(this_seg.seg_id, that_seg.seg_id);
   }
+
+  // assert that priority has been swapped (paranoia)
+  if (was_this_before_that)
+    assert(m_comparator(that_seg, this_seg));
+  else
+    assert(m_comparator(this_seg, that_seg));
 
   m_queue.insert(this_seg);
   m_queue.insert(that_seg);
