@@ -1,4 +1,5 @@
 #include <limits>
+#include <cstdlib>
 
 #include "snaro/segment.hpp"
 
