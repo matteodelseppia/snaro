@@ -1,9 +1,6 @@
 #include "snaro/details/bentley_ottmann_consumer.hpp"
 #include "snaro/details/pixel.hpp"
 
-#include <iostream>
-#include <set>
-
 namespace snaro::details {
 
 std::vector<event> bentley_ottmann_consumer::process(std::set<event>&& batch) {

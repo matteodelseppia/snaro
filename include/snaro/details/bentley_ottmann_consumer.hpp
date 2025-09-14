@@ -1,5 +1,8 @@
 #pragma once
 
+#include <vector>
+#include <set>
+
 #include "snaro/details/active_segment_queue.hpp"
 #include "snaro/details/event.hpp"
 
