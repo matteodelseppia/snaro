@@ -9,7 +9,7 @@ namespace snaro::details {
 struct pixel {
   using column = int64_t;
   using row = int64_t;
-  
+
   column x;
   row y;
 

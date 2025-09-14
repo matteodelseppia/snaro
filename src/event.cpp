@@ -2,7 +2,7 @@
 
 namespace snaro::details {
 
-bool event::operator<(const event &other) const {
+bool event::operator<(const event& other) const {
   if (position.x != other.position.x) {
     return position.x < other.position.x;
   }

@@ -6,7 +6,8 @@ using namespace snaro::details;
 
 namespace active_segment_queue_tests {
 
-active_segment make_segment(int id, double x1, double y1, double x2, double y2) {
+active_segment make_segment(int id, double x1, double y1, double x2,
+                            double y2) {
   active_segment seg{{x1, y1}, {x2, y2}};
   seg.seg_id = id;
   return seg;

@@ -12,7 +12,7 @@ struct event_ordering : public ::testing::Test {
     e.position.x = x;
     e.position.y = y;
     e.event_type = static_cast<decltype(e.event_type)>(type);
-    e.event_id   = id;
+    e.event_id = id;
     return e;
   }
 };

@@ -7,11 +7,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(Headers
   "include/snaro/point.hpp"
   "include/snaro/segment.hpp"
+  "include/snaro/bentley_ottmann.hpp"
   "include/snaro/details/pixel.hpp"
   "include/snaro/details/event.hpp"
   "include/snaro/details/event_queue.hpp"
   "include/snaro/details/active_segment_queue.hpp"
   "include/snaro/details/sweep_line.hpp"
+  "include/snaro/details/bentley_ottmann_consumer.hpp"
 )
 
 set(Sources
@@ -19,6 +21,8 @@ set(Sources
   "src/event.cpp"
   "src/event_queue.cpp"
   "src/active_segment_queue.cpp"
+  "src/bentley_ottmann_consumer.cpp"
+  "src/bentley_ottmann.cpp"
 )
 
 add_library(snaro ${Headers} ${Sources})

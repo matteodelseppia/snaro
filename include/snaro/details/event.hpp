@@ -8,7 +8,7 @@ namespace snaro::details {
 
 struct event {
   using id = size_t;
-  enum class type { start = 0, intersection = 1, end = 2};
+  enum class type { start = 0, intersection = 1, end = 2 };
 
   id event_id;
   type event_type;

@@ -13,20 +13,25 @@ using active_segment = ursegment;
 
 class active_segment_priority_manager {
 public:
-  void add_rule(const active_segment::id& higher, const active_segment::id& lower);
-  bool operator()(const active_segment::id& this_id, const active_segment::id& that_id) const;
+  void add_rule(const active_segment::id& higher,
+                const active_segment::id& lower);
+  bool operator()(const active_segment::id& this_id,
+                  const active_segment::id& that_id) const;
 
 private:
-  std::unordered_map<active_segment::id, std::unordered_set<active_segment::id>> m_rules;
+  std::unordered_map<active_segment::id, std::unordered_set<active_segment::id>>
+      m_rules;
 };
 
 class active_segment_comparator {
 public:
-  active_segment_comparator(const active_segment_priority_manager& priority_override,
-                            const double& sweep_line_x)
-    : m_priority_manager{priority_override}, m_sweep_line_x{sweep_line_x} {}
+  active_segment_comparator(
+      const active_segment_priority_manager& priority_override,
+      const double& sweep_line_x) :
+      m_priority_manager{priority_override}, m_sweep_line_x{sweep_line_x} {}
 
-  bool operator()(const active_segment& this_seg, const active_segment& that_seg) const;
+  bool operator()(const active_segment& this_seg,
+                  const active_segment& that_seg) const;
 
 private:
   const active_segment_priority_manager& m_priority_manager;
@@ -35,8 +40,8 @@ private:
 
 class active_segment_queue {
 public:
-  active_segment_queue()
-      : m_comparator{m_priority_manager, m_sweep_line_x}, m_queue{m_comparator} {}
+  active_segment_queue() :
+      m_comparator{m_priority_manager, m_sweep_line_x}, m_queue{m_comparator} {}
 
   bool is_empty() const;
   std::optional<active_segment> get_above(const active_segment& segment) const;

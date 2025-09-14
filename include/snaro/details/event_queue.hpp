@@ -1,8 +1,8 @@
 #pragma once
 
+#include <optional>
 #include <set>
 #include <vector>
-#include <optional>
 
 #include "snaro/details/event.hpp"
 
@@ -23,4 +23,4 @@ private:
   event::id m_next_id = 0;
 };
 
-} // snaro::details
+} // namespace snaro::details

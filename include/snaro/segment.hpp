@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstddef>
+#include <optional>
 
 #include "snaro/point.hpp"
 
@@ -17,6 +18,7 @@ struct segment {
   bool vertical() const;
   double y_at(double x) const;
   urpoint urpoint_at(double x) const;
+  std::optional<urpoint> intersection(const segment& other) const;
 };
 
 using ursegment = segment::unrounded;

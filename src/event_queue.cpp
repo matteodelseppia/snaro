@@ -3,9 +3,7 @@
 
 namespace snaro::details {
 
-bool event_queue::empty() const {
-  return m_events.empty();
-}
+bool event_queue::empty() const { return m_events.empty(); }
 
 std::optional<event> event_queue::front() const {
   if (empty()) {
@@ -39,11 +37,13 @@ std::set<event> event_queue::pop_column() {
   }
 
   const event peek = front().value();
-  const pixel::column current_column = pixel::column_of(peek.position, m_precision);
+  const pixel::column current_column =
+      pixel::column_of(peek.position, m_precision);
   while (!empty()) {
     const event e = front().value();
 
-    if (const pixel::column event_column = pixel::column_of(e.position, m_precision);
+    if (const pixel::column event_column =
+            pixel::column_of(e.position, m_precision);
         event_column != current_column) {
       break;
     }
@@ -55,4 +55,4 @@ std::set<event> event_queue::pop_column() {
   return events_of_column;
 }
 
-}  // namespace snaro::details
+} // namespace snaro::details

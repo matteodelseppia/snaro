@@ -4,21 +4,22 @@
 
 namespace snaro::details {
 
-void active_segment_priority_manager::add_rule(const active_segment::id& higher,
-                                               const active_segment::id& lower) {
+void active_segment_priority_manager::add_rule(
+    const active_segment::id& higher, const active_segment::id& lower) {
   m_rules[higher].insert(lower);
   m_rules[lower].erase(higher);
 }
 
-bool active_segment_priority_manager::operator()(const active_segment::id& this_id,
-                                                 const active_segment::id& that_id) const {
+bool active_segment_priority_manager::operator()(
+    const active_segment::id& this_id,
+    const active_segment::id& that_id) const {
   if (m_rules.contains(this_id))
     return m_rules.at(this_id).contains(that_id);
   return false;
 }
 
-bool active_segment_comparator::operator()(const active_segment& this_seg,
-                                           const active_segment& that_seg) const {
+bool active_segment_comparator::operator()(
+    const active_segment& this_seg, const active_segment& that_seg) const {
   const double this_y = this_seg.y_at(m_sweep_line_x);
   const double that_y = that_seg.y_at(m_sweep_line_x);
 
@@ -34,9 +35,7 @@ bool active_segment_comparator::operator()(const active_segment& this_seg,
   return this_seg.seg_id < that_seg.seg_id;
 }
 
-bool active_segment_queue::is_empty() const {
-  return m_queue.empty();
-}
+bool active_segment_queue::is_empty() const { return m_queue.empty(); }
 
 bool active_segment_queue::set_current_x(double x) {
   if (x < m_sweep_line_x)
@@ -92,7 +91,8 @@ bool active_segment_queue::swap(const active_segment& this_seg,
   return true;
 }
 
-std::optional<active_segment> active_segment_queue::get_above(const active_segment& segment) const {
+std::optional<active_segment>
+active_segment_queue::get_above(const active_segment& segment) const {
   const auto it = m_queue.find(segment);
   if (it == m_queue.cend())
     return std::nullopt;
@@ -102,7 +102,8 @@ std::optional<active_segment> active_segment_queue::get_above(const active_segme
   return *it_above;
 }
 
-std::optional<active_segment> active_segment_queue::get_below(const active_segment& segment) const {
+std::optional<active_segment>
+active_segment_queue::get_below(const active_segment& segment) const {
   const auto it = m_queue.find(segment);
   if (it == m_queue.cend() || it == m_queue.cbegin())
     return std::nullopt;
